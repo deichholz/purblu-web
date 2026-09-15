@@ -36,13 +36,6 @@
       ]
     },
     {
-      "name": "Sender harvest signup",
-      "url": "https://stats.sender.net/forms/bo2q7j/view",
-      "requiredIn": [
-        "harvest-list/index.html"
-      ]
-    },
-    {
       "name": "Midland Seafood",
       "url": "https://midlandseafood.com/",
       "requiredIn": [
