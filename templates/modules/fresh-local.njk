@@ -1,0 +1,4 @@
+<section class="hero shell" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow">{{ eyebrow }}</p><h1 id="hero-title">{{ headline }}</h1><div class="intro-copy">{{ content | safe }}</div><div class="actions"><a class="button primary" href="{{ primaryUrl }}">{{ primaryLabel }} <span aria-hidden="true">↗</span></a><a class="button secondary" href="{{ secondaryUrl }}">{{ secondaryLabel }} <span aria-hidden="true">→</span></a></div><p class="hero-note">Locally raised. Harvested for our neighbors.</p></div>
+  <figure class="hero-art"><img src="{{ image }}" srcset="{{ imageSmall }} 768w, {{ image }} 1536w" sizes="(max-width: 800px) 100vw, 55vw" width="1536" height="1024" alt="{{ imageAlt }}" fetchpriority="high"><figcaption>{{ imageCaption }}</figcaption></figure>
+</section>

@@ -1,0 +1,7 @@
+<section class="module product-module" aria-labelledby="product-title"><div class="shell split-grid">
+  <figure class="module-image"><img src="{{ image }}" width="1536" height="1024" loading="lazy" alt="{{ imageAlt }}"></figure>
+  <div><p class="eyebrow">{{ eyebrow }}</p><h2 id="product-title">{{ headline }}</h2><div class="module-copy">{{ content | safe }}</div>
+    <p class="mini-label">Choose your package</p><div class="package-list" aria-label="Available package sizes">{% for pounds in harvest.packagePounds %}<span>{{ pounds }} lb</span>{% endfor %}</div>
+    <p class="small-note">Package material and shrimp size count will be shared when confirmed.</p>
+  </div>
+</div></section>

@@ -1,0 +1,7 @@
+---
+layout: layouts/base.njk
+title: About PurBlu
+description: Meet the people and purpose behind PurBlu, a local shrimp farm in Jordan, Minnesota.
+---
+<header class="about-hero shell"><a class="back" href="/">← Back to PurBlu</a><p class="eyebrow">Our story</p><h1>Fresh shrimp—and a farm built for something bigger.</h1><p>PurBlu is a local shrimp business at Morning Glory Valley in Jordan, Minnesota. It began with a practical question: how could the farm build a lasting source of income while creating room for mentoring, meaningful work, and community?</p></header>
+{% for module in collections.aboutModules %}{% set moduleContext = module | moduleData %}{% renderFile 'templates/' + module.data.template, moduleContext %}{% endfor %}

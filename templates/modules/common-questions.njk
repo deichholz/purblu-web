@@ -1,0 +1,10 @@
+<section class="module faq-module"><div class="shell faq-grid">
+  <div><p class="eyebrow">{{ eyebrow }}</p><h2 id="faq-title">{{ headline }}</h2><div class="module-copy">{{ content | safe }}</div></div>
+  <div class="faqs" aria-labelledby="faq-title">
+    <details><summary>Where is pickup?</summary><p>{{ harvest.pickupAddress }}, during the announced pickup window.</p></details>
+    <details><summary>What does “whole shrimp” mean?</summary><p>The head and shell are intact. You can cook them whole or clean and peel them first.</p></details>
+    <details><summary>What quantities are available?</summary><p>{% for pounds in harvest.packagePounds %}{{ pounds }} lb{% if not loop.last %}, {% endif %}{% endfor %} packages at {{ harvest.pricePerPound | money }} per pound.</p></details>
+    <details><summary>Do you deliver?</summary><p>Delivery is not confirmed. Current harvest details are for pickup in Jordan.</p></details>
+    <details><summary>How should I keep shrimp cold?</summary><p>Bring an insulated cooler with ice or cold packs. See our preparation page for storage and cooking guidance.</p></details>
+  </div>
+</div></section>

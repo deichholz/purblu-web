@@ -1,0 +1,13 @@
+---
+layout: layouts/page.njk
+permalink: /about/press.html
+title: PurBlu in the press
+---
+<p class="lead">PurBlu raises shrimp in Jordan, Minnesota, for local customers. The business brings together Jean Spencer’s leadership experience and Tim Gregory’s hands-on work developing and operating the shrimp-growing facility.</p>
+<section class="press-section press-release-index" aria-labelledby="press-releases-title"><h2 id="press-releases-title">Press releases</h2>
+  {% if collections.pressReleases.length %}<ol class="press-release-list">{% for release in collections.pressReleases %}<li><time datetime="{{ release.data.releaseDate }}">{{ release.data.displayDate }}</time><a href="{{ release.url }}">{{ release.data.title }}</a></li>{% endfor %}</ol>{% else %}<p>No press releases are available yet.</p>{% endif %}
+</section>
+<section class="press-section"><h2>Company background</h2><p>PurBlu grew from an effort to build a lasting farm business at Morning Glory Valley—a place centered on mentoring, hospitality, and community. The shrimp operation is intended to help sustain that broader work while offering a fresh local product.</p></section>
+<section class="press-section"><h2>Jean Spencer</h2><p>Jean is a business and technology leader, executive coach, and mentor with more than 30 years of experience. Her career has included neurology nursing and senior roles across technology, engineering, finance, operations, and business leadership. In Jordan, she brings that experience to Morning Glory Valley and PurBlu.</p></section>
+<section class="press-section"><h2>Tim Gregory</h2><p>Tim leads PurBlu’s day-to-day farm operations. A Bloomington native, he helped design and build the shrimp-growing facility. His varied background in restaurants, ski instruction, landscaping, and small business now supports the daily work of monitoring systems, tracking data, and raising shrimp.</p></section>
+<p class="notice">Downloadable photography will be added after final image approvals.</p>

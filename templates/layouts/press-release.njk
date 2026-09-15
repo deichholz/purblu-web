@@ -1,0 +1,8 @@
+---
+layout: layouts/base.njk
+---
+<article class="press-release">
+  <header class="press-release-header shell"><a class="back" href="/about/press.html">← All press releases</a><p class="eyebrow">Press release · {{ displayDate }}</p><h1>{{ title }}</h1>{% if dek %}<p class="press-release-dek">{{ dek }}</p>{% endif %}</header>
+  {% if heroImage %}<figure class="press-release-hero shell"><img src="{{ heroImage }}" width="{{ heroWidth or 1575 }}" height="{{ heroHeight or 999 }}" alt="{{ heroAlt }}">{% if heroCaption %}<figcaption>{{ heroCaption }}</figcaption>{% endif %}</figure>{% endif %}
+  <div class="press-release-body shell">{{ content | safe }}</div>
+</article>

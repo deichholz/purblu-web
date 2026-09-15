@@ -1,0 +1,11 @@
+---
+layout: layouts/page.njk
+permalink: /about/contact.html
+title: Contact PurBlu
+---
+<p>Questions about PurBlu or an upcoming harvest? Call our operations team or follow along on social media.</p>
+{% if site.publicEmail %}<p><a href="mailto:{{ site.publicEmail }}">{{ site.publicEmail }}</a></p>{% endif %}
+{% if site.publicPhone %}<dl class="details"><div><dt>Operations</dt><dd><a href="tel:+16514688424">{{ site.publicPhone }}</a></dd></div><div><dt>Farm</dt><dd>Jordan, Minnesota</dd></div></dl>{% endif %}
+{% if not site.publicEmail and not site.publicPhone %}<p>Our public contact information will be added soon.</p>{% endif %}
+<div class="contact-links"><a href="{{ site.facebook }}">Facebook ↗</a><a href="{{ site.instagram }}">Instagram ↗</a></div>
+<p><a href="/pre-orders/index.html">View planned harvest and pickup details →</a></p>

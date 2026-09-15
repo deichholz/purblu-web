@@ -1,0 +1,8 @@
+---
+layout: layouts/page.njk
+title: Pre-order shrimp
+---
+<p>Our next harvest is planned for <strong>{{ harvest.displayDate }}</strong>, with pickup from {{ harvest.pickupWindow }} in Jordan.</p>
+<dl class="details"><div><dt>Price</dt><dd>{{ harvest.pricePerPound | money }} per pound</dd></div><div><dt>Packages</dt><dd>{% for pounds in harvest.packagePounds %}{{ pounds }} lb{% if not loop.last %}, {% endif %}{% endfor %}</dd></div><div><dt>Pickup</dt><dd>{{ harvest.pickupAddress }}</dd></div></dl>
+<h2>What you’ll receive</h2><p>PurBlu plans to offer whole, head-on, shell-on shrimp. Product form, packaging, and shrimp size count will be confirmed before ordering opens.</p>
+{% if harvest.orderUrlVerified and harvest.availability == 'open' and harvest.paymentTerms and harvest.cancellationTerms and harvest.guaranteeTerms %}<p>{{ harvest.paymentTerms }}</p><p>{{ harvest.cancellationTerms }}</p><p>{{ harvest.guaranteeTerms }}</p><a class="button primary" href="{{ harvest.orderUrl }}">Continue to pre-order →</a>{% elif harvest.availability == 'sold-out' %}<p>This harvest is sold out.</p><a href="/harvest-list/index.html">Get harvest alerts →</a>{% else %}<p class="notice">Online pre-orders are not available here yet. Please check back for availability and full ordering details.</p>{% endif %}

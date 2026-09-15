@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+title: Fresh shrimp, raised close to home
+canonical: /
+introRoutes: ["/", "/intro/index.html"]
+pagination:
+  data: introRoutes
+  size: 1
+  alias: introRoute
+permalink: "{{ introRoute }}"
+---
+{% for module in collections.introModules %}{% set moduleContext = module | moduleData %}{% renderFile 'templates/' + module.data.template, moduleContext %}{% endfor %}

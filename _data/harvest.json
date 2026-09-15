@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-26",
+  "displayDate": "September 26, 2026",
+  "pickupWindow": "9 am–5 pm",
+  "timezone": "America/Chicago",
+  "pricePerPound": 22,
+  "packagePounds": [1, 5, 10],
+  "pickupAddress": "16650 Pueblo Blvd, Jordan, MN 55352",
+  "availability": "unconfirmed",
+  "productForm": "whole, head-on, shell-on shrimp",
+  "productFormConfirmed": false,
+  "orderUrl": "https://www.purblushrimp.com/pre-order",
+  "orderUrlVerified": false,
+  "paymentTerms": null,
+  "cancellationTerms": null,
+  "guaranteeTerms": null,
+  "delivery": null,
+  "sizeCount": null
+}
