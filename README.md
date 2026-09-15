@@ -34,6 +34,8 @@ The unverified pre-order destination remains forbidden in generated anchors whil
 
 The workflow communicates only with GitHub and uses GitHub's temporary repository token to update `production`. It does not contain or use Porkbun, FTP, API, domain, or DNS credentials. Porkbun configuration remains a separate manual launch step.
 
+GitHub's repository-wide workflow-token default is read-only; only the publication job requests `contents: write`. The workflow uses normal fast-forward commits and never force-pushes. GitHub currently reports that repository rulesets are not enforceable for this private repository under the account's present plan, so protection against a trusted collaborator manually deleting or force-pushing `production` depends on repository access control until that plan limitation changes.
+
 ### Rollback
 
 For a normal rollback, identify and revert the problematic source change on `main`, push the revert, and let the workflow build, validate, and publish a new `production` commit. Verify the generated routes and ordering state after the workflow completes.
