@@ -1,0 +1,90 @@
+{
+  "requiredOrigin": "https://www.purblushrimp.com",
+  "maximumFileSizeBytes": 41943040,
+  "requiredFiles": [
+    "index.html",
+    "intro/index.html",
+    "pre-orders/index.html",
+    "harvest-list/index.html",
+    "about/index.html",
+    "about/contact.html",
+    "about/press.html",
+    "about/press-releases/shrimp-raised-in-minnesota/index.html",
+    "recipes/index.html",
+    "assets/site.css"
+  ],
+  "requiredExternalLinks": [
+    {
+      "name": "PurBlu Facebook",
+      "url": "https://www.facebook.com/PurBluShrimp/",
+      "requiredIn": [
+        "index.html",
+        "intro/index.html",
+        "harvest-list/index.html",
+        "about/contact.html",
+        "about/press-releases/shrimp-raised-in-minnesota/index.html"
+      ]
+    },
+    {
+      "name": "PurBlu Instagram",
+      "url": "https://www.instagram.com/PurBluShrimp/",
+      "requiredIn": [
+        "index.html",
+        "intro/index.html",
+        "harvest-list/index.html",
+        "about/contact.html"
+      ]
+    },
+    {
+      "name": "Sender harvest signup",
+      "url": "https://stats.sender.net/forms/bo2q7j/view",
+      "requiredIn": [
+        "harvest-list/index.html"
+      ]
+    },
+    {
+      "name": "Midland Seafood",
+      "url": "https://midlandseafood.com/",
+      "requiredIn": [
+        "about/press-releases/shrimp-raised-in-minnesota/index.html"
+      ]
+    }
+  ],
+  "requiredExternalResources": [
+    {
+      "name": "Google Fonts stylesheet",
+      "url": "https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap",
+      "requiredIn": [
+        "index.html",
+        "intro/index.html"
+      ]
+    },
+    {
+      "name": "Sender universal script",
+      "url": "https://cdn.sender.net/accounts_resources/universal.js",
+      "requiredIn": [
+        "harvest-list/index.html"
+      ]
+    }
+  ],
+  "forbiddenExternalLinks": [
+    {
+      "name": "Unverified pre-order destination",
+      "url": "https://www.purblushrimp.com/pre-order"
+    }
+  ],
+  "forbiddenPaths": [
+    ".github",
+    "_data",
+    "assets/originals",
+    "dist",
+    "docs",
+    "scripts",
+    "templates",
+    "validation",
+    "AGENTS.md",
+    "README.md",
+    "package.json",
+    "pnpm-lock.yaml"
+  ]
+}

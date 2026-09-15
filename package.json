@@ -2,9 +2,13 @@
   "name": "purblu-web",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate:build": "node scripts/validate-build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "packageManager": "pnpm@11.19.0",
   "private": true
 }

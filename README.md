@@ -4,20 +4,41 @@ Eleventy static website implementing the shared foundation plus all nine introdu
 
 ## Run locally
 
-Use Node.js 22 or newer and pnpm 11.19.0. From `web_site/`:
+Use Node.js 22 or newer and pnpm 11.19.0. From the repository root:
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm start
+pnpm exec eleventy --serve
 ```
 
 Open the local URL printed by Eleventy (normally `http://localhost:8080/`). Changes reload in the preview. Restart the server after changing plugins or build configuration. Stop with Ctrl+C.
 
 ```sh
 pnpm build
+pnpm validate:build
 ```
 
-Production build deletes only generated `dist/` and rebuilds it. Do not edit `dist/`; never store source work there. The lockfile pins dependencies. No CMS, backend, service secrets, or customer data are stored here.
+Production build deletes only generated `dist/` and rebuilds it. Build validation checks the required routes, links, resources, file types, file sizes, and publication boundaries described in `validation/build-contract.json`. Do not edit or commit `dist/`; never store source work there. The lockfile pins dependencies. No CMS, backend, service secrets, or customer data are stored here.
+
+## Build validation contract
+
+`validation/build-contract.json` is the reviewable publication contract. Add generated pages to `requiredFiles`. Add a customer-facing destination to `requiredExternalLinks` with the exact generated pages where its anchor must remain present. Put third-party scripts and stylesheets in `requiredExternalResources`. Use `forbiddenExternalLinks` for destinations that must not yet be exposed, and `forbiddenPaths` for source or internal material that must never enter the public artifact.
+
+`scripts/validate-build.mjs` implements these checks against `dist/`. It always requires both `index.html` and `intro/index.html`, validates local HTML links and assets, rejects symbolic links and non-regular entries, enforces Porkbun's 40 MB per-file limit, and confirms the production origin appears in every generated page. The validator checks that required external destinations are present in the intended output; it does not make network requests to third-party sites. Remote availability checks should be kept separate so a temporary Facebook, Instagram, Sender, or other provider outage cannot publish a partial site or make a valid build nondeterministic.
+
+The unverified pre-order destination remains forbidden in generated anchors while `_data/harvest.json` keeps `orderUrlVerified: false`. When the complete redirected destination and all ordering gates are verified, update the site data and validation contract together.
+
+## Automated publication branch
+
+`main` contains editable source and documentation. A push to `main` runs `.github/workflows/deploy-porkbun.yml`, builds and validates the site with read-only repository access, and passes only the generated artifact to a separate publication job. That job updates the root of the `production` branch with a normal commit. A failed build or validation leaves `production` unchanged, and a build with no output changes creates no empty commit.
+
+The workflow communicates only with GitHub and uses GitHub's temporary repository token to update `production`. It does not contain or use Porkbun, FTP, API, domain, or DNS credentials. Porkbun configuration remains a separate manual launch step.
+
+### Rollback
+
+For a normal rollback, identify and revert the problematic source change on `main`, push the revert, and let the workflow build, validate, and publish a new `production` commit. Verify the generated routes and ordering state after the workflow completes.
+
+For an emergency rollback, restore the tree from the last verified `production` commit as a new commit at the head of `production`, then push normally. Do not force-push or erase deployment history. Correct `main` before its next automatic deployment; otherwise a later build can restore the problematic output.
 
 ## Structure and editing
 
@@ -69,9 +90,9 @@ The press page lists every item tagged `pressRelease`, newest first. To add a re
 
 This scope is saved locally and has not been deployed. `site.launchReady: false` sets noindex on all pages; this is search metadata, not privacy protection. See `docs/content-register.md` for unresolved business inputs. Keep the draft private until later launch review is complete.
 
-When launch is authorized: confirm hosting/domain setup; resolve outstanding flows; finish the requested later modules/pages; verify mobile, keyboard, links, forms and download permissions; replace development illustrations as appropriate; set the chosen production origin; set launchReady true only for the reviewed release; run `pnpm build`; upload **only `dist/`** to the selected static host. Configure HTTPS and directory index serving while preserving `.html` contact/press paths. Check `/` and the canonical `/intro/index.html` alias on the real domain. Do not redirect `/pre-order` to this site unless the existing order routing is deliberately configured.
+When launch is authorized: confirm hosting/domain setup; resolve outstanding flows; finish the requested later modules/pages; verify mobile, keyboard, links, forms and download permissions; replace development illustrations as appropriate; set the chosen production origin; set launchReady true only for the reviewed release; run `pnpm build` and `pnpm validate:build`; and connect the selected static host only to the generated `production` branch. Configure HTTPS and directory index serving while preserving `.html` contact/press paths. Check `/` and the canonical `/intro/index.html` alias on the real domain. Do not redirect `/pre-order` to this site unless the existing order routing is deliberately configured.
 
-Retain an archive of the prior deployed `dist/` and source revision. Roll back by restoring that reviewed output on the host, then verify routes and ordering status. Actual provider commands remain pending host selection, rather than invented deployment instructions.
+The `production` branch retains prior generated commits for review and rollback. Actual Porkbun, domain, and DNS changes remain manual and are not performed by this repository.
 
 ## Verification performed
 
