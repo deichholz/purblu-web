@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "dev": "eleventy --serve",
     "validate:build": "node scripts/validate-build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
