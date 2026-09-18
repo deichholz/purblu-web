@@ -1,0 +1,4 @@
+<section class="press-section{% if image %} press-bio{% endif %}"><h2>{{ headline }}</h2>
+  {% if image %}<img class="press-bio-photo" src="{{ image }}" alt="{{ imageAlt }}" width="{{ imageWidth }}" height="{{ imageHeight }}" loading="lazy" decoding="async">{% endif %}
+  {{ content | safe }}
+</section>
