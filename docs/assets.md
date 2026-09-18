@@ -18,3 +18,7 @@ Internal record, excluded from output. Originals stay in `assets/originals/` and
 Hero prompt: whole raw head-on shell-on shrimp on crushed ice, delicate graphite and watercolor editorial illustration, muted gray-blue shrimp, restrained coral accents, pale teal ice, white textured paper, 3:2 landscape, no text or logo.
 
 Replace hero images with approved actual photographs when available. Keep the same dimensions or update width/height and responsive sources together; update alt text and remove sketch caption only then. Do not stretch the logo or redraw it. Preserve master assets and record source, rights, approval date, caption, and pictured names for future downloads.
+
+## Press biography portraits — September 18, 2026
+
+Tim Gregory and Jean Spencer portraits supplied by the user as assets/tim.jpg and assets/jean.jpg. Use in their respective press bios authorized by the user's request on September 18, 2026; photographer and copyright owner were not supplied. Original JPEGs preserved in assets/originals/ as well as their supplied locations. Web derivatives: assets/tim-bio.jpg (480 × 595) and assets/jean-bio.jpg (480 × 552), proportionally resized without cropping. Display width: 180 px. Alt text: Portrait of Tim Gregory / Portrait of Jean Spencer. The adjacent biography heading identifies each person; no separate caption. Download permission is not established.
