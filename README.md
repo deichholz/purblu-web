@@ -2,13 +2,24 @@
 
 Eleventy static website implementing the shared foundation plus all nine introduction modules from `web_plan/action.md` step 4. Step 5 now includes the About story modules and expanded contact, press, pre-order, and harvest-list pages. The recipe page remains a placeholder by request. Unavailable ordering and signup integrations are represented honestly rather than with non-functioning forms.
 
+## Simple overview
+Most of the files and directories in this repository are used to generate the static html files in `dist/`. If you want to change the code or content or images in one of those files, change the corresponding markdown (text) or the template referenced from the markdown files. 
+
+To deploy changes to the porkbun website, merge to main or push to main. See details below. 
+
+### Initial setup for making and viewing changes
+1. Install `git` and clone repo `https://github.com/deichholz/purblu-web.git`
+2. Install `node` (I recommend using a tool called `nvm` to install, but just get it installed any way that works)
+3. Install `pnpm` 
+
+
 ## Run locally
 
 Use Node.js 22 or newer and pnpm 11.19.0. From the repository root:
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm exec eleventy --serve
+pnpm dev
 ```
 
 Open the local URL printed by Eleventy (normally `http://localhost:8080/`). Changes reload in the preview. Restart the server after changing plugins or build configuration. Stop with Ctrl+C.
