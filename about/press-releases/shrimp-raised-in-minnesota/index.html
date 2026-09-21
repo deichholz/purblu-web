@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shrimp Raised in Minnesota? PurBlu Shrimp Makes It a Reality | PurBlu</title>
   <meta name="description" content="PurBlu Shrimp announces its first Minnesota harvest and introduces the people, purpose, and Midwest partnership behind the Jordan shrimp farm.">
-  <meta name="robots" content="noindex, nofollow">
+  
   <link rel="canonical" href="https://www.purblushrimp.com/about/press-releases/shrimp-raised-in-minnesota/">
   <link rel="icon" href="/assets/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
   <link rel="icon" href="/assets/favicon-96x96.png" sizes="96x96" type="image/png">
@@ -23,7 +23,22 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="header"><div class="shell"><a class="brand" href="/" aria-label="PurBlu home"><img src="/assets/logo.webp" width="140" height="130" alt="PurBlu Shrimp"></a></div></header>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="PurBlu home"><img src="/assets/logo.webp" width="140" height="130" alt="PurBlu Shrimp"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/about/index.html">Our Story</a>
+        <a href="/about/press.html">Press</a>
+        <a href="/about/contact.html">Contact Us</a>
+        <!--<a href="/recipes/index.html">Recipes</a>-->
+      </nav>
+    </div>
+  </header>
   <main id="main"><article class="press-release">
   <header class="press-release-header shell"><a class="back" href="/about/press.html">← All press releases</a><p class="eyebrow">Press release · September 2, 2026</p><h1>Shrimp Raised in Minnesota? PurBlu Shrimp Makes It a Reality</h1><p class="press-release-dek">New Jordan farm pairs sustainable aquaculture technology with experienced leadership and young entrepreneurship to bring locally raised shrimp, raised without antibiotics in the feed, to the Twin Cities.</p></header>
   <figure class="press-release-hero shell"><img src="/assets/purblu-team-photo-with-additional-member-v3.webp" width="1575" height="999" alt="The PurBlu and Morning Glory Valley team gathered inside the shrimp-growing facility in Jordan, Minnesota."></figure>
@@ -71,5 +86,24 @@ PurBlu Shrimp<br>
       <a href="https://www.instagram.com/PurBluShrimp/" aria-label="PurBlu on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1"/></svg></a>
     </nav>
   </div></footer>
+  <script>
+    const header = document.querySelector('.header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (header && navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = header.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      siteNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          header.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>

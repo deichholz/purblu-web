@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PurBlu in the press | PurBlu</title>
   <meta name="description" content="Fresh local shrimp, raised close to home in Jordan, Minnesota. Meet PurBlu and learn about local harvests.">
-  <meta name="robots" content="noindex, nofollow">
+  
   <link rel="canonical" href="https://www.purblushrimp.com/about/press.html">
   <link rel="icon" href="/assets/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
   <link rel="icon" href="/assets/favicon-96x96.png" sizes="96x96" type="image/png">
@@ -23,7 +23,22 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="header"><div class="shell"><a class="brand" href="/" aria-label="PurBlu home"><img src="/assets/logo.webp" width="140" height="130" alt="PurBlu Shrimp"></a></div></header>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="PurBlu home"><img src="/assets/logo.webp" width="140" height="130" alt="PurBlu Shrimp"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/about/index.html">Our Story</a>
+        <a href="/about/press.html">Press</a>
+        <a href="/about/contact.html">Contact Us</a>
+        <!--<a href="/recipes/index.html">Recipes</a>-->
+      </nav>
+    </div>
+  </header>
   <main id="main"><article class="page shell"><a class="back" href="/">← Back to PurBlu</a><p class="eyebrow">PurBlu · Jordan, Minnesota</p><h1>PurBlu in the press</h1><div class="page-copy"><p class="lead">PurBlu raises Pacific white shrimp indoors in Jordan, Minnesota, for local customers. The business was developed to help fund Morning Glory Valley’s mentoring and community work with young adults. Jean Spencer brings more than 30 years of business and technology leadership experience to the venture. Tim Gregory helped design and build the facility and leads daily operations.</p>
 <section class="press-section press-release-index" aria-labelledby="press-releases-title"><h2 id="press-releases-title">Press releases</h2>
   <ol class="press-release-list"><li><time datetime="2026-09-02">September 2, 2026</time><a href="/about/press-releases/shrimp-raised-in-minnesota/">Shrimp Raised in Minnesota? PurBlu Shrimp Makes It a Reality</a></li></ol>
@@ -65,5 +80,24 @@
       <a href="https://www.instagram.com/PurBluShrimp/" aria-label="PurBlu on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1"/></svg></a>
     </nav>
   </div></footer>
+  <script>
+    const header = document.querySelector('.header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (header && navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = header.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      siteNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          header.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>

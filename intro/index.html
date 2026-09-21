@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fresh shrimp, raised close to home | PurBlu</title>
   <meta name="description" content="Fresh local shrimp, raised close to home in Jordan, Minnesota. Meet PurBlu and learn about local harvests.">
-  <meta name="robots" content="noindex, nofollow">
+  
   <link rel="canonical" href="https://www.purblushrimp.com/">
   <link rel="icon" href="/assets/favicon.ico" sizes="16x16 32x32 48x48" type="image/x-icon">
   <link rel="icon" href="/assets/favicon-96x96.png" sizes="96x96" type="image/png">
@@ -23,7 +23,22 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="header"><div class="shell"><a class="brand" href="/" aria-label="PurBlu home"><img src="/assets/logo.webp" width="140" height="130" alt="PurBlu Shrimp"></a></div></header>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="PurBlu home"><img src="/assets/logo.webp" width="140" height="130" alt="PurBlu Shrimp"></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="/about/index.html">Our Story</a>
+        <a href="/about/press.html">Press</a>
+        <a href="/about/contact.html">Contact Us</a>
+        <!--<a href="/recipes/index.html">Recipes</a>-->
+      </nav>
+    </div>
+  </header>
   <main id="main"><section class="hero shell" aria-labelledby="hero-title">
   <div class="hero-copy"><p class="eyebrow">Raised in Jordan, Minnesota</p><h1 id="hero-title">Fresh shrimp, raised close to home.</h1><div class="intro-copy"><p>PurBlu raises shrimp in Jordan, Minnesota, then harvests and packs them for local pickup. Good food starts with knowing where it comes from. Ours starts close to home.</p>
 </div><div class="actions"><a class="button primary" href="/pre-orders/index.html">Pre-order shrimp <span aria-hidden="true">↗</span></a><a class="button secondary" href="/harvest-list/index.html">Get harvest alerts <span aria-hidden="true">→</span></a></div><p class="hero-note">Locally raised. Harvested for our neighbors.</p></div>
@@ -99,5 +114,24 @@
       <a href="https://www.instagram.com/PurBluShrimp/" aria-label="PurBlu on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1"/></svg></a>
     </nav>
   </div></footer>
+  <script>
+    const header = document.querySelector('.header');
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (header && navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = header.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      siteNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          header.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
