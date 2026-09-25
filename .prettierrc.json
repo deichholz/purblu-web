@@ -1,0 +1,22 @@
+{
+  "plugins": ["prettier-plugin-nunjucks"],
+  "overrides": [
+    {
+      "files": "**/*.{html,njk,md}",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "**/*.js",
+      "options": {
+        "parser": "babel"
+      }
+    }
+  ],
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false
+}

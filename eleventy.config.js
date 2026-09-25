@@ -13,5 +13,6 @@ export default function(eleventyConfig) {
   eleventyConfig.addCollection('pressModules', api => api.getFilteredByTag('pressModule').sort((a,b) => a.data.order-b.data.order));
   eleventyConfig.addCollection('pressReleases', api => api.getFilteredByTag('pressRelease').sort((a,b) => b.data.releaseDate.localeCompare(a.data.releaseDate)));
   eleventyConfig.addFilter('money', value => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value));
+  eleventyConfig.addFilter('digitsOnly', value => String(value ?? '').replace(/\D/g, ''));
   return { dir: { input: '.', output: 'dist', includes: 'templates', data: '_data' }, templateFormats: ['html','njk','md'], htmlTemplateEngine:'njk', markdownTemplateEngine:'njk' };
 }
