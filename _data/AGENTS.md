@@ -21,7 +21,7 @@ This directory contains the authoritative mutable values used across the site. K
 - `origin` must be the reviewed production origin without a trailing slash.
 - Add public email, phone, and social accounts only after exact business confirmation.
 - `signupUrl` must be the hosted fallback for the same Sender form/account embedded on the harvest-list page.
-- Keep `launchReady: false` until an explicit launch review authorizes indexing. Remember that noindex is not privacy protection.
+- `launchReady` is currently true, allowing indexing. Setting it false emits noindex metadata; it does not provide privacy protection.
 - `growersReady` controls whether the footer links to the implemented growers section or the About page.
 
 After any data edit, build and inspect the introduction, pre-order, harvest-list, contact, footer, metadata, and any other page that consumes the changed key.

@@ -1,6 +1,6 @@
 # PurBlu website
 
-Eleventy static website implementing the shared foundation plus all nine introduction modules from `web_plan/action.md` step 4. Step 5 now includes the About story modules and expanded contact, press, pre-order, and harvest-list pages. The recipe page remains a placeholder by request. Unavailable ordering and signup integrations are represented honestly rather than with non-functioning forms.
+Eleventy static website implementing the shared foundation plus all nine introduction modules from `web_plan/action.md` step 4. Step 5 now includes the About story modules and expanded contact, press, pre-order, and harvest-list pages. The recipe page remains a placeholder by request. Ordering remains gated pending verification and terms; harvest-list signup uses Sender with a hosted-form fallback.
 
 ## Simple overview
 Most of the files and directories in this repository are used to generate the static html files in `dist/`. If you want to change the code or content or images in one of those files, change the corresponding markdown (text) or the template referenced from the markdown files. 
@@ -43,7 +43,7 @@ The unverified pre-order destination remains forbidden in generated anchors whil
 
 `main` contains editable source and documentation. A push to `main` runs `.github/workflows/deploy-porkbun.yml`, builds and validates the site with read-only repository access, and passes only the generated artifact to a separate publication job. That job updates the root of the `production` branch with a normal commit. A failed build or validation leaves `production` unchanged, and a build with no output changes creates no empty commit.
 
-The workflow communicates only with GitHub and uses GitHub's temporary repository token to update `production`. It does not contain or use Porkbun, FTP, API, domain, or DNS credentials. Porkbun configuration remains a separate manual launch step.
+The workflow communicates only with GitHub and uses GitHub's temporary repository token to update `production`. It does not contain or use Porkbun, FTP, API, domain, or DNS credentials. Porkbun configuration is managed separately from this workflow.
 
 GitHub's repository-wide workflow-token default is read-only; only the publication job requests `contents: write`. The workflow uses normal fast-forward commits and never force-pushes. GitHub currently reports that repository rulesets are not enforceable for this private repository under the account's present plan, so protection against a trusted collaborator manually deleting or force-pushing `production` depends on repository access control until that plan limitation changes.
 
@@ -99,14 +99,12 @@ Use `docs/preparation-copy.md` for the drafted cleaning guidance and two recipes
 
 The press page lists every item tagged `pressRelease`, newest first. To add a release, copy the structure in `about/press-releases/shrimp-raised-in-minnesota/index.md`, use an ISO `releaseDate` for sorting, provide `displayDate`, and write the release body in Markdown. `heroImage`, `heroAlt`, `heroWidth`, `heroHeight`, and `heroCaption` are optional; omit them for a text-only release. Use `docs/press-copy.md` for prepared company and grower bios. Put approved downloadable images/documents in a dedicated public asset folder rather than copying the whole internal press folder.
 
-## Review and launch later
+## Release verification
 
-This scope is saved locally and has not been deployed. `site.launchReady: false` sets noindex on all pages; this is search metadata, not privacy protection. See `docs/content-register.md` for unresolved business inputs. Keep the draft private until later launch review is complete.
-
-When launch is authorized: confirm hosting/domain setup; resolve outstanding flows; finish the requested later modules/pages; verify mobile, keyboard, links, forms and download permissions; replace development illustrations as appropriate; set the chosen production origin; set launchReady true only for the reviewed release; run `pnpm build` and `pnpm validate:build`; and connect the selected static host only to the generated `production` branch. Configure HTTPS and directory index serving while preserving `.html` contact/press paths. Check `/` and the canonical `/intro/index.html` alias on the real domain. Do not redirect `/pre-order` to this site unless the existing order routing is deliberately configured.
+For site updates, run `pnpm build` and `pnpm validate:build`, then review affected routes, mobile layouts, keyboard navigation, links, forms and download permissions. See `docs/content-register.md` for unresolved business inputs. Verify `/` and the canonical `/intro/index.html` alias after publication, and preserve the explicit `.html` contact/press paths. Do not redirect `/pre-order` to this site unless the existing order routing is deliberately configured.
 
 The `production` branch retains prior generated commits for review and rollback. Actual Porkbun, domain, and DNS changes remain manual and are not performed by this repository.
 
 ## Verification performed
 
-Production build and static checks cover all nine generated routes, local links/assets, image dimensions and alt text, the nine introduction modules, press-release listing and article structure, root/alias equality, canonical tags, shared data rendering, and inactive unverified order/signup states. Full step 6 launch verification remains a separate task.
+Production build and static checks cover all nine generated routes, local links/assets, image dimensions and alt text, the nine introduction modules, press-release listing and article structure, root/alias equality, canonical tags, shared data rendering, and the gated ordering state. Sender submission testing requires an approved address and method.

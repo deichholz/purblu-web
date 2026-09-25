@@ -119,7 +119,7 @@ PurBlu should feel fresh, local, clean, trustworthy, and premium without being f
 
 Maintain accessibility: semantic landmarks and heading order, meaningful alt text, visible keyboard focus, usable skip link, sufficient contrast, comfortable touch targets, responsive layouts without horizontal overflow, and labels/status text that do not rely only on color.
 
-## Integrations and launch gates
+## Integrations and publication
 
 The ordering CTA is intentionally gated. It may render only when all of these are true:
 
@@ -133,7 +133,7 @@ Use `availability: "sold-out"` to close ordering while keeping the harvest-list 
 
 The harvest-list page conditionally loads Sender's universal script through `senderForm` and must retain the hosted `site.signupUrl` fallback. If the form/account changes, update and verify the Sender account identifier and hosted URL together. Test submissions only with an approved address and method; do not send unsolicited email.
 
-`site.launchReady: false` adds `noindex, nofollow`, but it is not access control. Keep it false until a reviewed public release is authorized. A launch requires confirmed hosting/domain setup, working customer journeys, current business facts, approved assets/copy, full route/link/form/accessibility checks, and production verification. Publish only `dist/` to a static host. Do not deploy or change DNS merely because a build succeeds.
+`site.launchReady` is currently true, allowing indexing. Setting it false adds `noindex, nofollow`; this is search metadata, not access control. Review customer journeys, business facts, assets/copy, routes, links, forms, and accessibility for affected changes, and verify production after publication. Publish only generated `dist/` output to the static host. Do not change hosting or DNS merely because a build succeeds.
 
 ## Verification checklist
 

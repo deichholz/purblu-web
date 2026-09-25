@@ -1,6 +1,6 @@
 # Content and flow register
 
-Reviewed September 10, 2026. Internal development record; excluded from the public build.
+Initially reviewed September 10, 2026; configuration references updated September 25, 2026 against local source. Internal development record; excluded from the public build.
 
 ## Approved inputs and sources
 
@@ -14,17 +14,17 @@ Reviewed September 10, 2026. Internal development record; excluded from the publ
 ## Customer journeys
 
 1. Hero Pre-order shrimp → `/pre-orders/index.html`. Displays the resolved price, packages, date, pickup address/window. No order is accepted. The supplied external destination returned HTTP 302 to `https://purblushrimp-com.l.ink/pre-order`, then HTTP 404 on September 10. Keep `orderUrlVerified` false until the complete destination works. Payment, cancellation, and guarantee terms remain unknown. Published CTA requires verified URL, open availability, and all three terms.
-2. Hero Get harvest alerts → `/harvest-list/index.html`. Shows an honest coming-soon state until a working hosted Sender signup URL is entered. No fake submit or success behavior. Unknown: list ID, URL/embed, consent/confirmation behavior, test method. Planned fields: first name, last name, email; optional phone and ZIP. Suggested copy: “Hear about upcoming PurBlu harvests and pre-order announcements.” Internal intended cadence is one week before and harvest day; owner agreement still needed before promising it publicly.
+2. Hero Get harvest alerts → `/harvest-list/index.html`. Loads the configured Sender form and retains the hosted `site.signupUrl` fallback. End-to-end submission testing still requires an approved address and method. Internal intended cadence is one week before and harvest day; owner agreement is needed before promising it publicly.
 3. Footer Press and Contact lead to expanded supporting pages. The Facebook and Instagram destinations now use the exact business URLs in the project instructions.
 4. Footer About opens the implemented growers section at `/#growers`; that module also links to the full `/about/index.html` story.
 
 ## Open facts
 
-- Preferred public email. `hello@purblushrimp.com` is listed internally but is not silently treated as approved public contact. The operations phone from the project instructions is published with an Operations label.
+- Public contact values are maintained in `_data/site.json`; older proposed contacts must not override that record.
 - Payment timing, cancellation/refund terms, and exact reservation guarantee.
 - Current available pounds, harvest size/count, delivery, packaging material, product-form signoff.
-- Working pre-order destination and Sender signup integration.
+- Working pre-order destination and end-to-end Sender submission verification.
 - Final publication permissions and complete captions for every team/farm image.
 - Press approval, final contacts and release date, ministry wording, and downloadable photo rights.
 
-No launch is included in this request. `site.launchReady` remains false (noindex); noindex is not access control. All nine step 4 modules are implemented, with unavailable terms and integrations stated honestly. Step 5 now includes the About modules plus expanded contact, press, pre-order, and harvest-list pages. The recipe page was explicitly skipped, and ordering/signup integrations remain future work.
+All nine introduction modules, the About modules, contact, press, pre-order, and harvest-list pages are implemented. The recipe page remains an intentional placeholder. Indexing is enabled in `_data/site.json`; ordering remains gated by destination verification, availability, and terms.
