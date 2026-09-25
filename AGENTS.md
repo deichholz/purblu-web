@@ -151,3 +151,5 @@ For harvest changes, update the date, display date, pickup window/timezone, pric
 
 For launch-affecting changes, also validate every public route, social link, form fallback, page title/description, canonical URL, favicon, responsive breakpoint, image weight, and real-domain behavior. Preserve a reviewed prior build/source revision for rollback.
 
+## Repo Maintenance
+When asked to commit changes, always include a summary of the changes focused on the apparent purpose of the change. If files are left uncommitted, inform the user of which changes are still pending.

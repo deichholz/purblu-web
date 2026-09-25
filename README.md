@@ -2,13 +2,20 @@
 
 Eleventy static website implementing the shared foundation plus all nine introduction modules from `web_plan/action.md` step 4. Step 5 now includes the About story modules and expanded contact, press, pre-order, and harvest-list pages. The recipe page remains a placeholder by request. Ordering remains gated pending verification and terms; harvest-list signup uses Sender with a hosted-form fallback.
 
-## Simple overview
-Most of the files and directories in this repository are used to generate the static html files in `dist/`. If you want to change the code or content or images in one of those files, change the corresponding markdown (text) or the template referenced from the markdown files. 
+For service URLs, account IDs and operational context, see [Systems handoff](docs/system-handoff.md).
 
-To deploy changes to the porkbun website, merge to main or push to main. See details below. 
+## Simple overview
+Most of the files and directories in this repository are used to generate the static html files in `dist/`. If you want to change the code or content or images in one of those files, change the corresponding markdown (text) or the template referenced from the markdown files. Never change `dist/` directly because your changes will get wiped out.
+
+To deploy changes to the porkbun website, push to main or better yet, merge in a PR from a separate branch. See details below. 
 
 ### Initial setup for making and viewing changes
+If this is unfamiliar, feel free to ask ChatGPT/Codex to install and set this up for you. 
+If you are using Windows 11, you may find it beneficial to install WSL, but that shouldn't be necessary.
+
 1. Install `git` and clone repo `https://github.com/deichholz/purblu-web.git`
+  - git cli OR
+  - github's Desktop App at `https://desktop.github.com/download/`
 2. Install `node` (I recommend using a tool called `nvm` to install, but just get it installed any way that works)
 3. Install `pnpm` 
 
@@ -31,6 +38,8 @@ pnpm validate:build
 
 Production build deletes only generated `dist/` and rebuilds it. Build validation checks the required routes, links, resources, file types, file sizes, and publication boundaries described in `validation/build-contract.json`. Do not edit or commit `dist/`; never store source work there. The lockfile pins dependencies. No CMS, backend, service secrets, or customer data are stored here.
 
+## Periodically, you may be prompted to update packages.
+- This will usually happen as a Pull Request from 
 ## Build validation contract
 
 `validation/build-contract.json` is the reviewable publication contract. Add generated pages to `requiredFiles`. Add a customer-facing destination to `requiredExternalLinks` with the exact generated pages where its anchor must remain present. Put third-party scripts and stylesheets in `requiredExternalResources`. Use `forbiddenExternalLinks` for destinations that must not yet be exposed, and `forbiddenPaths` for source or internal material that must never enter the public artifact.
